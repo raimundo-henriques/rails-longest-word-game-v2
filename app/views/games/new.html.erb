@@ -1,17 +1,21 @@
-<h1>New Game</h1>
-<div>
-  <ul>
-    <% @letters.each do |letter|%>
-    <li><%= letter %></li>
-    <% end %>
-  </ul>
-</div>
-<form action="/score" method="POST" data-turbo="false">
-  <p>What is the longest word you can find?</p>
+<div class="container">
+  <h1>New Game</h1>
   <div>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= hidden_field_tag :letters, @letters %>
-    <input type="text" name="word">
-    <input type="submit" value="Play">
+    <ul class="ps-0">
+      <div class="d-flex justify-content-between">
+        <% @letters.each do |letter|%>
+          <li class="letter-card"><%= letter %></li>
+        <% end %>
+      </div>
+    </ul>
   </div>
-</form>
+  <div>
+  <p>What is the longest word you can find?</p>
+    <form class="input-group" action="/score" method="POST" data-turbo="false">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :letters, @letters %>
+        <input class="form-control" type="text" name="word">
+        <input class="input-group-append btn btn-outline-secondary" type="submit" value="Play">
+    </form>
+  </div>
+</div>
